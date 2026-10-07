@@ -39,19 +39,14 @@ wait_until() {
 }
 
 # Right after a first install KWin may not have noticed the new packages yet; load them directly.
-# From the next login on, KWin loads them by itself.
+# From the next login on, KWin loads them by itself. (Scripting.start runs every loaded script
+# that isn't running yet. Script object paths get reused, so they can't be relied on.)
 load_now() {
-    local id
-    if ! loaded fullscreen-spaces; then
-        id=$(kwin_call /Scripting org.kde.kwin.Scripting loadDeclarativeScript \
-            "$DIR/fullscreen-spaces/contents/ui/main.qml" fullscreen-spaces | awk '$1 == "int32" || $1 == "i" {print $2}')
-        kwin_call "/Scripting/Script$id" org.kde.kwin.Script run >/dev/null
-    fi
-    if ! loaded fullscreen-spaces-menu; then
-        id=$(kwin_call /Scripting org.kde.kwin.Scripting loadScript \
-            "$DIR/fullscreen-spaces-menu/contents/code/main.js" fullscreen-spaces-menu | awk '$1 == "int32" || $1 == "i" {print $2}')
-        kwin_call "/Scripting/Script$id" org.kde.kwin.Script run >/dev/null
-    fi
+    loaded fullscreen-spaces || kwin_call /Scripting org.kde.kwin.Scripting loadDeclarativeScript \
+        "$DIR/fullscreen-spaces/contents/ui/main.qml" fullscreen-spaces >/dev/null
+    loaded fullscreen-spaces-menu || kwin_call /Scripting org.kde.kwin.Scripting loadScript \
+        "$DIR/fullscreen-spaces-menu/contents/code/main.js" fullscreen-spaces-menu >/dev/null
+    kwin_call /Scripting org.kde.kwin.Scripting start >/dev/null
 }
 
 set_enabled() {
