@@ -1,0 +1,23 @@
+{
+    "KPlugin": {
+        "Name": "Fullscreen Spaces",
+        "Description": "macOS-style full screen: each full screen window gets its own virtual desktop, removed again when the window leaves full screen or closes. Hover at the top edge for a title bar.",
+        "Icon": "view-fullscreen",
+        "Authors": [
+            {
+                "Name": "Dustin Szabo"
+            }
+        ],
+        "Id": "fullscreen-spaces",
+        "Version": "1.0.0",
+        "License": "MIT",
+        "EnabledByDefault": false,
+        "Website": "https://github.com/VagueDustin/kwin-fullscreen-spaces",
+        "BugReportUrl": "https://github.com/VagueDustin/kwin-fullscreen-spaces/issues",
+        "Category": "Window Management"
+    },
+    "X-Plasma-API": "declarativescript",
+    "X-Plasma-MainScript": "ui/main.qml",
+    "X-KDE-ConfigModule": "kwin/effects/configs/kcm_kwin4_genericscripted",
+    "KPackageStructure": "KWin/Script"
+}

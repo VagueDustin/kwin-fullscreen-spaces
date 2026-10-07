@@ -1,0 +1,22 @@
+{
+    "KPlugin": {
+        "Name": "Fullscreen Spaces: Window Menu",
+        "Description": "Adds \"Enter/Exit Full Screen Space\" to the window menu (right-click a title bar). Needs Fullscreen Spaces.",
+        "Icon": "view-fullscreen",
+        "Authors": [
+            {
+                "Name": "Dustin Szabo"
+            }
+        ],
+        "Id": "fullscreen-spaces-menu",
+        "Version": "1.0.0",
+        "License": "MIT",
+        "EnabledByDefault": false,
+        "Website": "https://github.com/VagueDustin/kwin-fullscreen-spaces",
+        "BugReportUrl": "https://github.com/VagueDustin/kwin-fullscreen-spaces/issues",
+        "Category": "Window Management"
+    },
+    "X-Plasma-API": "javascript",
+    "X-Plasma-MainScript": "code/main.js",
+    "KPackageStructure": "KWin/Script"
+}
